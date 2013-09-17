@@ -1,0 +1,16 @@
+Would you rather
+
+<% @question.options.each_with_index do |option, index| %>
+
+  <%= simple_form_for [option, option.votes.build] do |f| %>
+    <%= f.submit option.content %>
+  <% end %>
+
+  <%= 'OR' if index < @question.options.count - 1 %>
+<% end %>
+
+
+<% @question.options.each do |option| %>
+  <%= "#{option.content} was chosen #{option.chosen_percentage}% of the time" %>
+<% end %>
+

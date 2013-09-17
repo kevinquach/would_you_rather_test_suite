@@ -1,0 +1,10 @@
+<%= simple_form_for @question do |f| %>
+  <%= f.input :description %>
+
+  <% option_count = 0 %>
+  <%= f.simple_fields_for :options do |option| %>
+    <% option_count += 1 %>
+    <%= option.input :content, label: "Option #{option_count}" %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
