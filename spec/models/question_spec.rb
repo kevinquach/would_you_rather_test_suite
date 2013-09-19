@@ -10,7 +10,7 @@ describe Question do
     let(:other_option) {   question.options.last }
     let(:vote) {           FactoryGirl.create(:vote, option: popular_option) }
     let(:vote2) {          FactoryGirl.create(:vote, option: popular_option) }
-
+  
     it 'returns the most popular option' do
       vote
       vote2

@@ -1,3 +1,5 @@
+require 'pry-rails'
+
 class Question < ActiveRecord::Base
   has_many :votes,
     through: :options
@@ -12,10 +14,19 @@ class Question < ActiveRecord::Base
 
   class << self
     def most_active
+      
     end
   end
 
   def most_popular_option
-    "hmmmm"
-  end
+    votes_array = self.options.map{|option| option.votes.count}
+
+    if votes_array[0] > votes_array[1]
+      self.options.first
+    elsif votes_array[0] < votes_array[1]
+      self.options.last
+    else
+      nil
+    end
+  end 
 end
