@@ -37,6 +37,7 @@ feature 'user views the results of a question', %q{
   scenario 'shows most active question (most votes) on homepage' do
     question2
     question3
+    # binding.pry
     visit root_path
     expect(page).to have_content "Currently the most active question is #{question.description}"
   end

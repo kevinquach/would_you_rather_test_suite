@@ -14,7 +14,14 @@ class Question < ActiveRecord::Base
 
   class << self
     def most_active
-      
+      # # order('votes desc').first
+      # max_value['question'
+      # questions.each do |question|
+      #   votes_array = question.options.map{|option| option.votes.count}
+      #   sum = votes_array[0] + votes_array[1]
+      #   if sum >= max_value[question]
+      #     max_value[question] = sum
+      #   end
     end
   end
 
