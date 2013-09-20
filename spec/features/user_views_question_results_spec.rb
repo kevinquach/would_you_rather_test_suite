@@ -34,7 +34,7 @@ feature 'user views the results of a question', %q{
     expect(page).to have_content "#{option2.content} was chosen 66% of the time"
   end
 
-  scenario 'shows most active question (most votes) on homepage' do
+  scenario 'shows most active question (most votes) on homepage', focus: true do
     question2
     question3
     

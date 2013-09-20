@@ -14,6 +14,7 @@ class Question < ActiveRecord::Base
 
   class << self
     def most_active
+
       @most_active = []
       hash = {}
       Question.all.each do |question|
@@ -26,13 +27,14 @@ class Question < ActiveRecord::Base
       end
 
       sorted_hash = hash.sort_by{ |question_id, vote_sum| vote_sum }
-      
-      most_active_question_id = sorted_hash.last[0]
-      
-      @most_active = Question.where('id = ?', most_active_question_id).first
-      binding.pry
-      @most_active
+      unless sorted_hash == []
+        most_active_question_id = sorted_hash.last[0]
+        @most_active = Question.where('id = ?', most_active_question_id).first
+
+      end
+    @most_active 
     end
+
   end
 
   def most_popular_option
