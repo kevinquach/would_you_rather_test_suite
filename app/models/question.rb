@@ -14,14 +14,24 @@ class Question < ActiveRecord::Base
 
   class << self
     def most_active
-      # # order('votes desc').first
-      # max_value['question'
-      # questions.each do |question|
-      #   votes_array = question.options.map{|option| option.votes.count}
-      #   sum = votes_array[0] + votes_array[1]
-      #   if sum >= max_value[question]
-      #     max_value[question] = sum
-      #   end
+      @most_active = []
+      hash = {}
+      Question.all.each do |question|
+        question.options.each do |option|
+          unless hash.has_key?(option.question_id)
+            hash[option.question_id] = 0
+          end
+          hash[option.question_id] += option.votes.count
+        end
+      end
+
+      sorted_hash = hash.sort_by{ |question_id, vote_sum| vote_sum }
+      
+      most_active_question_id = sorted_hash.last[0]
+      
+      @most_active = Question.where('id = ?', most_active_question_id).first
+      binding.pry
+      @most_active
     end
   end
 
