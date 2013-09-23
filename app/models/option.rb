@@ -9,6 +9,9 @@ class Option < ActiveRecord::Base
 
 
   def chosen_percentage
-    0
+    if self.question.votes.count > 0
+      percentage = ((self.votes.count.to_f / self.question.votes.count.to_f) * 100).to_i
+    end
+    percentage
   end
 end

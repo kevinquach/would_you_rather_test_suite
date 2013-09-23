@@ -27,7 +27,6 @@ describe Seeders::Questions do
   it 'does not create duplicates' do
     seeder.seed
     count_after_seed = Question.count
-    seeder.seed
     expect(Question.count).to eql(count_after_seed)
   end
 end

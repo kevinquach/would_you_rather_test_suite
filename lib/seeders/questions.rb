@@ -11,7 +11,7 @@ module Seeders
             option = question.options.build({content: option})
             question.options << option
           end
-
+          question.save!
         end
       end
 
@@ -38,6 +38,9 @@ module Seeders
             "Have unicorns be real"
           ]
         }
+      end
+
+      def options
       end
     end
   end
